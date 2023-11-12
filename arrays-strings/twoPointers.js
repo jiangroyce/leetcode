@@ -53,7 +53,7 @@ function merge(arr1, arr2) {
     return ans;
 }
 
-console.log(merge([1,4,7,20], [3,5,6]))
+// console.log(merge([1,4,7,20], [3,5,6]))
 
 function isSubsequence(s, t) {
     let i = 0, j = 0;
@@ -63,4 +63,4 @@ function isSubsequence(s, t) {
     return (i === s.length);
 }
 
-console.log(isSubsequence("ace", "abcde"))
+// console.log(isSubsequence("ace", "abcde"))

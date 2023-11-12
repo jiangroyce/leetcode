@@ -30,8 +30,8 @@ Difference between 2 adjacent windows is only 2 elements
 */
 // Ex. 1:
 // find length of longest subarray in nums that has sum <= k
-let nums = [3, 2, 1, 3, 1, 1];
-let k = 5;
+// let nums = [3, 2, 1, 3, 1, 1];
+// let k = 5;
 // 0. Identify constraint metric (sum <= k)
 function findLength(nums, k) {
     let result = 0;
@@ -140,3 +140,29 @@ function longestOnes(nums, k) {
     }
     return ans;
 }
+
+// Minimum Size Subarray Sum
+function minSubArrayLen(target, nums) {
+    let ans = nums.length;
+    let mid = Math.floor(nums.length / 2);
+    while (mid < nums.length && mid > 1) {
+        let subarrays = []
+        let sum = 0;
+        for (let i = 0; i < mid; i++) {
+            if (nums[i] === target) return 1;
+            sum += nums[i]
+        }
+        if (sum >= target) subarrays.push(nums.slice(0, mid))
+        for (let i = mid; i < nums.length; i++) {
+            sum += nums[i] - nums[i-mid];
+            if (sum >= target) subarrays.push(nums.slice(i, mid+i))
+        }
+        if (subarrays.length) {
+            ans = mid;
+            mid--;
+        }   else mid++;
+    }
+    return ans;
+}
+debugger
+console.log(minSubArrayLen(7, [2,3,1,2,4,3]))
